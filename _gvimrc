@@ -1,0 +1,27 @@
+set showtabline=2		" 常にタブを表示
+set lines=70			" 縦幅
+set columns=180			" 横幅
+
+" ツールバーとメニューバーを削除
+set guioptions-=m
+set guioptions-=T
+
+"ポップアップの色を変更
+hi Pmenu guibg=#666666
+hi PmenuSel guibg=#8cd0d3 guifg=#666666
+hi PmenuSbar guibg=#333333
+
+"全角の可視化
+scriptencoding utf-8
+augroup highlightZenkakuSpace
+  autocmd!
+  autocmd VimEnter,ColorScheme * highlight ZenkakuSpace term=underline ctermbg=Red guibg=Red
+  autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+augroup END
+
+"Osakaフォント利用
+let s:using_font= 'Osaka' . "\x81\x7c\x93\x99\x95\x9d"
+let &guifont=s:using_font . ':h11:cSHIFTJIS'
+unlet s:using_font
+
+colorscheme desert
